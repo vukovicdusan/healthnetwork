@@ -18,12 +18,23 @@ const TopNavigation = (props: TopNavigationProps) => {
   const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
-    open
-      ? (document.body.style.position = "fixed")
-      : (document.body.style.position = "revert");
+    const screenWidth = window.innerWidth;
+    if (open) {
+      if (screenWidth < 640) {
+        document.body.style.position = "fixed";
+        document.body.style.left = "50%";
+        document.body.style.transform = "translateX(-50%)";
+      }
+    } else {
+      document.body.style.position = "revert";
+      document.body.style.left = "revert";
+      document.body.style.transform = "revert";
+    }
 
     return () => {
       document.body.style.position = "revert";
+      document.body.style.left = "revert";
+      document.body.style.transform = "revert";
     };
   }, [open]);
 
@@ -42,23 +53,33 @@ const TopNavigation = (props: TopNavigationProps) => {
         }`}
       >
         <ul className="flex gap-3 flex-wrap sm:flex-nowrap flex-col sm:flex-row">
-          {props.links.map((link, index) => (
-            <li key={index} className="text-right">
-              {link.type === "onPage" ? (
-                <a
-                  onClick={navHandler}
-                  className="hover:text-primaryAccent uppercase transition-colors duration-200 ease-linear"
-                  href={link.link}
-                >
-                  {link.name}
-                </a>
-              ) : (
-                <Link onClick={navHandler} href={link.link}>
-                  {link.name}
-                </Link>
-              )}
-            </li>
-          ))}
+          <li className="text-right">
+            <a
+              onClick={navHandler}
+              className="hover:text-primaryAccent uppercase transition-colors duration-200 ease-linear"
+              href={"#"}
+            >
+              Inpage LInk
+            </a>
+          </li>
+          <li className="text-right">
+            <Link
+              className="hover:text-primaryAccent uppercase transition-colors duration-200 ease-linear"
+              onClick={navHandler}
+              href={"#"}
+            >
+              Blog
+            </Link>
+          </li>
+          <li className="text-right">
+            <Link
+              className="hover:text-primaryAccent uppercase transition-colors duration-200 ease-linear"
+              onClick={navHandler}
+              href={"/login"}
+            >
+              Login/Register
+            </Link>
+          </li>
         </ul>
       </nav>
       <button
