@@ -3,7 +3,8 @@
 @tailwind utilities;
 
 :root {
-  --primaryBg: #1e1e1e;
+  --primaryBg: #000;
+  --secondaryBg: #1e1e1e
   --primaryAccent: #7f1b1b;
   --secondaryAccent: #212f52;
   --textLight: snow;
@@ -17,4 +18,24 @@
 body {
   background-color: var(--primaryBg);
   color: var(--textLight);
+}
+
+h1 {
+  font-size: 62px;
+}
+
+h2 {
+  font-size: 52px;
+}
+
+h3 {
+  font-size: 42px;
+}
+
+h4 {
+  font-size: 32px;
+}
+
+h5 {
+  font-size: 25px;
 }
