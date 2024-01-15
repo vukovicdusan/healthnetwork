@@ -1,11 +1,18 @@
 "use client";
+import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 type TopNavigationProps = {
   links: {
     link: string;
     name: string;
+    type: string;
   }[];
+};
+type LinkProp = {
+  link: string;
+  name: string;
+  type: string;
 };
 const TopNavigation = (props: TopNavigationProps) => {
   const [open, setOpen] = useState<boolean>(false);
@@ -37,13 +44,19 @@ const TopNavigation = (props: TopNavigationProps) => {
         <ul className="flex gap-3 flex-wrap sm:flex-nowrap flex-col sm:flex-row">
           {props.links.map((link, index) => (
             <li key={index} className="text-right">
-              <a
-                onClick={navHandler}
-                className="hover:text-primaryAccent uppercase transition-colors duration-200 ease-linear"
-                href={link.link}
-              >
-                {link.name}
-              </a>
+              {link.type === "onPage" ? (
+                <a
+                  onClick={navHandler}
+                  className="hover:text-primaryAccent uppercase transition-colors duration-200 ease-linear"
+                  href={link.link}
+                >
+                  {link.name}
+                </a>
+              ) : (
+                <Link onClick={navHandler} href={link.link}>
+                  {link.name}
+                </Link>
+              )}
             </li>
           ))}
         </ul>
