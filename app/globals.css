@@ -4,10 +4,11 @@
 
 :root {
   --primaryBg: #000;
-  --secondaryBg: #1e1e1e
+  --secondaryBg: #202123;
   --primaryAccent: #7f1b1b;
   --secondaryAccent: #212f52;
   --textLight: snow;
+  --textLighter: #4e4e50;
 }
 
 @media (prefers-color-scheme: dark) {

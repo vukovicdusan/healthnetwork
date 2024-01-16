@@ -11,12 +11,12 @@ const config: Config = {
       backgroundImage: {},
       colors: {
         primaryAccent: "#7F1B1B",
-        secondaryAccent: "#212F52",
+        secondaryAccent: "#D26E19",
         primaryBg: "#000",
-        secondaryBg: "#1E1E1E",
+        secondaryBg: "#202123",
         tertiaryBg: "rgba(0,0,0,0.1)",
         textLight: "snow",
-        textLighter: "#666",
+        textLighter: "#4E4E50",
       },
       spacing: {
         wrapperWidth: "clamp(16rem, 93vw, 75rem)",
