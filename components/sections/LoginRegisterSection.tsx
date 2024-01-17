@@ -21,16 +21,19 @@ const LoginRegisterSection = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center gap-5 w-full p-5">
-      <nav className="flex gap-2 border-b border-textLighter">
+    <div className="flex flex-col justify-center gap-5 w-3/4 p-5 mt-32">
+      <nav className="flex gap-2 w-min px-1 relative before:absolute before:bg-textLighter before:bottom-0 before:left-0 before:w-full before:h-[3px]">
         <button
           className={
-            navState === "login" ? "text-secondaryAccent" : "text-textLighter"
+            "transition-all duration-200 ease-linear " +
+            `${
+              navState === "login" ? "text-secondaryAccent" : "text-textLighter"
+            }`
           }
           onClick={loginRegisterNavHandler}
           value="login"
         >
-          Login
+          LOGIN
         </button>
         <button
           className={
@@ -41,8 +44,18 @@ const LoginRegisterSection = () => {
           onClick={loginRegisterNavHandler}
           value="register"
         >
-          Register
+          REGISTER
         </button>
+        <span
+          className={
+            "absolute h-[3px] bg-secondaryAccent rounded-full bottom-0 transition-all duration-200 ease-linear " +
+            `${
+              navState === "login"
+                ? " left-0 w-16"
+                : " left-1/2 -translate-x-2 w-[81px]"
+            }`
+          }
+        ></span>
       </nav>
       {navState === "login" ? (
         <LoginForm></LoginForm>

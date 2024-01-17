@@ -13,10 +13,10 @@ const config: Config = {
         primaryAccent: "#7F1B1B",
         secondaryAccent: "#D26E19",
         primaryBg: "#000",
-        secondaryBg: "#202123",
+        secondaryBg: "#181818",
         tertiaryBg: "rgba(0,0,0,0.1)",
         textLight: "snow",
-        textLighter: "#4E4E50",
+        textLighter: "#b3b3b3",
       },
       spacing: {
         wrapperWidth: "clamp(16rem, 93vw, 75rem)",

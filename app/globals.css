@@ -3,12 +3,12 @@
 @tailwind utilities;
 
 :root {
-  --primaryBg: #000;
+  --primaryBg: #121212;
   --secondaryBg: #202123;
   --primaryAccent: #7f1b1b;
   --secondaryAccent: #212f52;
   --textLight: snow;
-  --textLighter: #4e4e50;
+  --textLighter: #b3b3b3;
 }
 
 @media (prefers-color-scheme: dark) {

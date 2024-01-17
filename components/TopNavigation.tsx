@@ -2,19 +2,7 @@
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
-type TopNavigationProps = {
-  links: {
-    link: string;
-    name: string;
-    type: string;
-  }[];
-};
-type LinkProp = {
-  link: string;
-  name: string;
-  type: string;
-};
-const TopNavigation = (props: TopNavigationProps) => {
+const TopNavigation = () => {
   const [open, setOpen] = useState<boolean>(false);
 
   useEffect(() => {
