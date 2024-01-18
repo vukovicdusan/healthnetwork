@@ -21,7 +21,7 @@ const LoginRegisterSection = () => {
   };
 
   return (
-    <div className="flex flex-col justify-center gap-5 w-3/4 p-5 mt-32">
+    <div className="flex flex-col justify-center gap-5 w-3/4 p-5 md:mt-24 z-10">
       <nav className="flex gap-2 w-min px-1 relative before:absolute before:bg-textLighter before:bottom-0 before:left-0 before:w-full before:h-[3px]">
         <button
           className={

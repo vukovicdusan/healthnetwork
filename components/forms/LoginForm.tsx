@@ -1,12 +1,14 @@
-import { registerUser } from "@/helpers/registerUser";
+import { labelHolder } from "@/helpers/labelHolder";
+import { loginUser } from "@/helpers/loginUser";
 import useLoginRegisterInput from "@/hooks/useLoginRegisterInput";
 import React from "react";
 
 const LoginForm = () => {
-  const [value, valueHandler] = useLoginRegisterInput();
+  const [inputValue, valueHandler] = useLoginRegisterInput();
 
-  const submitHandler = () => {
-    registerUser(value.name, value.email, value.password);
+  const submitHandler = (e: React.MouseEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    loginUser(inputValue.email, inputValue.password);
   };
 
   return (
@@ -20,12 +22,8 @@ const LoginForm = () => {
         />
         <label
           className={
-            "absolute top-[25px] text-textLighter peer-focus:-top-0 peer-focus:text-sm peer-focus:text-secondaryAccent transition-all duration-200 ease-linear " +
-            `${
-              value.email && value.email.length > 0
-                ? "-top-0 text-sm !text-secondaryAccent"
-                : null
-            }`
+            "absolute top-[25px] text-textLighter peer-focus:top-0 peer-focus:text-sm peer-focus:text-secondaryAccent transition-all duration-200 ease-linear" +
+            labelHolder(inputValue.email)
           }
           htmlFor="email"
         >
@@ -41,12 +39,8 @@ const LoginForm = () => {
         />
         <label
           className={
-            "absolute top-[25px] text-textLighter peer-focus:-top-0 peer-focus:text-sm peer-focus:text-secondaryAccent transition-all duration-200 ease-linear " +
-            `${
-              value.password && value.password.length > 0
-                ? "-top-0 text-sm !text-secondaryAccent"
-                : null
-            }`
+            "absolute top-[25px] text-textLighter peer-focus:-top-0 peer-focus:text-sm peer-focus:text-secondaryAccent transition-all duration-200 ease-linear" +
+            labelHolder(inputValue.password)
           }
           htmlFor="password"
         >

@@ -16,13 +16,6 @@ export const loginRegisterChecker = (name: string, value: string) => {
             error: true,
             message: "Please enter a real mail.",
           };
-
-    case "password":
-      return { error: false, message: "" };
-
-    case "passwordRepeat":
-      return { error: false, message: "" };
-
     default:
       return { error: false, message: "" };
   }

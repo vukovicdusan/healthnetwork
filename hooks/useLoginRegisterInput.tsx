@@ -11,7 +11,7 @@ type ErrorState = {
 };
 
 const useLoginRegisterInput = () => {
-  const [value, setValue] = useState<FormState>({});
+  const [inputValue, setInputValue] = useState<FormState>({});
   const [usernameError, setUsernameError] = useState<ErrorState>({});
   const [emailError, setEmailError] = useState<ErrorState>({});
   const [passwordError, setPasswordError] = useState<ErrorState>({});
@@ -20,10 +20,21 @@ const useLoginRegisterInput = () => {
     const { name, value } = e.target;
     const { error, message } = loginRegisterChecker(name, value);
 
-    setValue((prevState) => ({
-      ...prevState,
-      [name]: value,
-    }));
+    setInputValue((prevInputValue) => {
+      const updatedValue = {
+        ...prevInputValue,
+        [name]: value,
+      };
+
+      if (updatedValue.password && updatedValue.passwordRepeat) {
+        updatedValue.password !== updatedValue.passwordRepeat
+          ? setPasswordError({ error: true, message: "Passwords don't match" })
+          : setPasswordError({ error: false, message: "" });
+      }
+
+      return updatedValue;
+    });
+
     if (error) {
       switch (name) {
         case "username":
@@ -40,16 +51,10 @@ const useLoginRegisterInput = () => {
       setEmailError({ error: false, message: "" });
       setUsernameError({ error: false, message: "" });
     }
-
-    // error
-    //   ? setInputError({ error: error, message: message })
-    //   : setInputError({ error: false, message: "" });
-    // value.length < 1 &&
-    //   setInputError({ error: true, message: "You have to input something." });
   };
 
   return [
-    value,
+    inputValue,
     valueHandler,
     usernameError,
     emailError,
