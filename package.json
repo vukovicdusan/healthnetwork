@@ -9,8 +9,10 @@
     "lint": "next lint"
   },
   "dependencies": {
-    "firebase": "^10.7.1",
+    "@prisma/client": "^5.10.2",
     "next": "14.0.4",
+    "next-auth": "^4.24.6",
+    "prisma": "^5.10.2",
     "react": "^18",
     "react-dom": "^18"
   },

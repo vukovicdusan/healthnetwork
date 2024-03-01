@@ -2,9 +2,12 @@
 import React, { useState } from "react";
 import LoginForm from "../forms/LoginForm";
 import RegisterForm from "../forms/RegisterForm";
+import { useSession } from "next-auth/react";
 
 const LoginRegisterSection = () => {
   const [navState, setNavState] = useState("login");
+  const { data, status } = useSession();
+  console.log("data: " + data, "status: " + status);
 
   const loginRegisterNavHandler = (e: React.MouseEvent<HTMLButtonElement>) => {
     const buttonValue = (e.target as HTMLButtonElement).value;

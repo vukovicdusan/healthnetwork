@@ -1,0 +1,53 @@
+[33mcommit c40978eb7e65b000ad2ccea960227acfec6b151b[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: Picvajzmen <picvajzmen@gmail.com>
+Date:   Thu Jan 18 12:51:55 2024 +0100
+
+    Register mostly done
+
+[33mcommit 2ddb26738eaf74aac026c4589afb35c3b1cb4267[m
+Author: Picvajzmen <picvajzmen@gmail.com>
+Date:   Wed Jan 17 13:49:18 2024 +0100
+
+    Login register input logic half way done
+
+[33mcommit 2bc589336956db0d19cc093574a28cf345d6d834[m
+Author: Picvajzmen <picvajzmen@gmail.com>
+Date:   Tue Jan 16 13:47:41 2024 +0100
+
+    Started login register forms
+
+[33mcommit 72037fe74880ce929705afd76d1d6acdd32cf5ea[m
+Author: Picvajzmen <picvajzmen@gmail.com>
+Date:   Mon Jan 15 13:44:33 2024 +0100
+
+    small responsive fixes for top nav
+
+[33mcommit 5c9e826fdea559dc4aff47c8613e344924b1f7e5[m
+Author: Picvajzmen <picvajzmen@gmail.com>
+Date:   Mon Jan 15 12:21:05 2024 +0100
+
+    Small logic change for TopNavigation comp
+
+[33mcommit 1186408df9f7d8c95af872fccc64a30365f18e9b[m
+Author: Picvajzmen <picvajzmen@gmail.com>
+Date:   Mon Jan 15 11:34:43 2024 +0100
+
+    Added firebase
+
+[33mcommit 7b3958d1a1c4af15511056d529bcd8ac1f734977[m
+Author: vukovicdusan <dusan.v.vukovic@gmail.com>
+Date:   Sun Jan 14 13:00:48 2024 +0100
+
+    Changed gitignore, added some content to hero
+
+[33mcommit d3328badfe25d71e20fc675d8c3f1733464ca091[m
+Author: Picvajzmen <picvajzmen@gmail.com>
+Date:   Fri Jan 12 11:55:42 2024 +0100
+
+    First commit
+
+[33mcommit e42eee430737480ef9e496a954b6930ad64787ea[m
+Author: Picvajzmen <picvajzmen@gmail.com>
+Date:   Thu Jan 11 09:01:25 2024 +0100
+
+    Initial commit from Create Next App
