@@ -1,9 +1,15 @@
 "use client";
+import { auth } from "@/firebase/firebase";
+import useUser from "@/hooks/useUser";
+import { onAuthStateChanged, signOut } from "firebase/auth";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
 const TopNavigation = () => {
   const [open, setOpen] = useState<boolean>(false);
+  const [user] = useUser();
+
+  console.log(user);
 
   useEffect(() => {
     const screenWidth = window.innerWidth;
@@ -60,13 +66,17 @@ const TopNavigation = () => {
             </Link>
           </li>
           <li className="text-right">
-            <Link
-              className="hover:text-primaryAccent uppercase transition-colors duration-200 ease-linear"
-              onClick={navHandler}
-              href={"/login"}
-            >
-              Login/Register
-            </Link>
+            {!user.loggedIn ? (
+              <Link
+                className="hover:text-primaryAccent uppercase transition-colors duration-200 ease-linear"
+                onClick={navHandler}
+                href={"/login"}
+              >
+                Login/Register
+              </Link>
+            ) : (
+              <button onClick={() => signOut(auth)}>Logout</button>
+            )}
           </li>
         </ul>
       </nav>
