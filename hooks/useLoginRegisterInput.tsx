@@ -47,10 +47,11 @@ const useLoginRegisterInput = () => {
           setEmailError({ error: false, message: "" });
           setUsernameError({ error: false, message: "" });
       }
-    } else {
-      setEmailError({ error: false, message: "" });
-      setUsernameError({ error: false, message: "" });
     }
+    // else {
+    //   setEmailError({ error: false, message: "" });
+    //   setUsernameError({ error: false, message: "" });
+    // }
   };
 
   return [

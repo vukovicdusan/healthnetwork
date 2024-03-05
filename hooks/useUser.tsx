@@ -20,15 +20,6 @@ const useUser = () => {
     });
   }, []);
 
-  //   signOut(auth)
-  //     .then(() => {
-  //       // Sign-out successful.
-  //       setUser({ loggedIn: false, uid: "" });
-  //     })
-  //     .catch((error) => {
-  //       // An error happened.
-  //     });
-
   return [user] as const;
 };
 

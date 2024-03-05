@@ -1,7 +1,7 @@
 "use client";
 import { auth } from "@/firebase/firebase";
 import useUser from "@/hooks/useUser";
-import { onAuthStateChanged, signOut } from "firebase/auth";
+import { signOut } from "firebase/auth";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
 
