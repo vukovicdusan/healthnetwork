@@ -1,4 +1,4 @@
-import { createUserWithEmailAndPassword } from "firebase/auth";
+import { createUserWithEmailAndPassword, updatePro } from "firebase/auth";
 import { auth, db } from "@/firebase/firebase";
 import { doc, setDoc } from "firebase/firestore";
 
@@ -10,7 +10,9 @@ export const registerUser = async (
   await createUserWithEmailAndPassword(auth, email, password)
     .then((userCredential) => {
       const user = userCredential.user;
-      console.log(user);
+      // updateProfile(user, {
+      //   displayName: "Jane Q. User", photoURL: "https://example.com/jane-q-user/profile.jpg"
+      // })
       // Signed up
       setDoc(doc(db, "users", user.uid), {
         username: username,

@@ -4,6 +4,7 @@ import useUser from "@/hooks/useUser";
 import { signOut } from "firebase/auth";
 import Link from "next/link";
 import React, { useEffect, useState } from "react";
+import AvatarMenu from "./AvatarMenu";
 
 const TopNavigation = () => {
   const [open, setOpen] = useState<boolean>(false);
@@ -50,7 +51,7 @@ const TopNavigation = () => {
           <li className="text-right">
             <a
               onClick={navHandler}
-              className="hover:text-primaryAccent uppercase transition-colors duration-200 ease-linear"
+              className="hover:text-secondaryAccent uppercase transition-colors duration-200 ease-linear"
               href={"#"}
             >
               Inpage LInk
@@ -58,7 +59,7 @@ const TopNavigation = () => {
           </li>
           <li className="text-right">
             <Link
-              className="hover:text-primaryAccent uppercase transition-colors duration-200 ease-linear"
+              className="hover:text-secondaryAccent uppercase transition-colors duration-200 ease-linear"
               onClick={navHandler}
               href={"#"}
             >
@@ -68,14 +69,14 @@ const TopNavigation = () => {
           <li className="text-right">
             {!user.loggedIn ? (
               <Link
-                className="hover:text-primaryAccent uppercase transition-colors duration-200 ease-linear"
+                className="hover:text-secondaryAccent uppercase transition-colors duration-200 ease-linear"
                 onClick={navHandler}
                 href={"/login"}
               >
                 Login/Register
               </Link>
             ) : (
-              <button onClick={() => signOut(auth)}>Logout</button>
+              <AvatarMenu></AvatarMenu>
             )}
           </li>
         </ul>

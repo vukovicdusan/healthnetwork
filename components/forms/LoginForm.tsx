@@ -1,7 +1,7 @@
-import { labelHolder } from "@/helpers/labelHolder";
 import useLoginUser from "@/hooks/useLoginUser";
 import useLoginRegisterInput from "@/hooks/useLoginRegisterInput";
 import React from "react";
+import InputLabel from "../InputLabel";
 
 const LoginForm = () => {
   const [inputValue, valueHandler, , emailError] = useLoginRegisterInput();
@@ -12,7 +12,8 @@ const LoginForm = () => {
     loginUser(inputValue.email, inputValue.password);
   };
 
-  console.log(emailError);
+  let formEmpty = !inputValue.email || !inputValue.password;
+  let isAnyError = emailError.error;
 
   return (
     <form onSubmit={submitHandler}>
@@ -33,15 +34,11 @@ const LoginForm = () => {
             {emailError.message}
           </span>
         ) : null}
-        <label
-          className={
-            "absolute top-[25px] text-textLighter peer-focus:top-0 peer-focus:text-sm peer-focus:text-secondaryAccent transition-all duration-200 ease-linear" +
-            labelHolder(inputValue.email)
-          }
-          htmlFor="email"
-        >
-          Email
-        </label>
+        <InputLabel
+          labelName={"Email"}
+          isEmpty={!inputValue.email}
+          htmlFor={"email"}
+        ></InputLabel>
       </div>
       <div className="flex flex-col justify-end relative h-12 mb-2">
         <input
@@ -50,17 +47,20 @@ const LoginForm = () => {
           name="password"
           type="password"
         />
-        <label
-          className={
-            "absolute top-[25px] text-textLighter peer-focus:-top-0 peer-focus:text-sm peer-focus:text-secondaryAccent transition-all duration-200 ease-linear" +
-            labelHolder(inputValue.password)
-          }
-          htmlFor="password"
-        >
-          Password
-        </label>
+        <InputLabel
+          labelName={"Password"}
+          isEmpty={!inputValue.password}
+          htmlFor={"password"}
+        ></InputLabel>
       </div>
-      <button className="bg-primaryAccent rounded-xl px-6 py-[6px] mt-4 hover:bg-secondaryAccent transition-all duration-100 ease-linear">
+      <button
+        className={
+          "bg-primaryAccent rounded-xl px-6 py-[6px] mt-4 hover:bg-secondaryAccent transition-all duration-100 ease-linear" +
+          `${
+            isAnyError || formEmpty ? " !pointer-events-none opacity-35" : null
+          }`
+        }
+      >
         Login
       </button>
     </form>

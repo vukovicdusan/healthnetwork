@@ -1,4 +1,5 @@
-import { loginRegisterChecker } from "@/helpers/loginRegisterChecker";
+import { emailChecker } from "@/helpers/emailChecker";
+import { usernameChecker } from "@/helpers/usernameChecker";
 import React, { useState } from "react";
 
 type FormState = {
@@ -17,41 +18,45 @@ const useLoginRegisterInput = () => {
   const [passwordError, setPasswordError] = useState<ErrorState>({});
 
   const valueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
+    /* Extracted input value*/
     const { name, value } = e.target;
-    const { error, message } = loginRegisterChecker(name, value);
 
+    /** Set extracted value state and check for password repeat value */
     setInputValue((prevInputValue) => {
       const updatedValue = {
         ...prevInputValue,
         [name]: value,
       };
 
-      if (updatedValue.password && updatedValue.passwordRepeat) {
-        updatedValue.password !== updatedValue.passwordRepeat
-          ? setPasswordError({ error: true, message: "Passwords don't match" })
-          : setPasswordError({ error: false, message: "" });
+      if (updatedValue.passwordRepeat) {
+        if (updatedValue.password && updatedValue.passwordRepeat) {
+          updatedValue.password !== updatedValue.passwordRepeat
+            ? setPasswordError({
+                error: true,
+                message: "Passwords don't match",
+              })
+            : setPasswordError({ error: false, message: "" });
+        }
       }
-
       return updatedValue;
     });
 
-    if (error) {
-      switch (name) {
-        case "username":
-          setUsernameError({ error: error, message: message });
-          break;
-        case "email":
-          setEmailError({ error: error, message: message });
-          break;
-        default:
-          setEmailError({ error: false, message: "" });
-          setUsernameError({ error: false, message: "" });
-      }
+    /* Check for fieldname and use checker functions*/
+    switch (name) {
+      case "username":
+        const { usernameError, usernameErrorMessage } = usernameChecker(value);
+        setUsernameError({
+          error: usernameError,
+          message: usernameErrorMessage,
+        });
+        break;
+      case "email":
+        const { emailError, emailErrorMessage } = emailChecker(value);
+        setEmailError({ error: emailError, message: emailErrorMessage });
+        break;
+      default:
+        "";
     }
-    // else {
-    //   setEmailError({ error: false, message: "" });
-    //   setUsernameError({ error: false, message: "" });
-    // }
   };
 
   return [

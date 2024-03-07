@@ -1,8 +1,8 @@
 import React from "react";
 import useLoginRegisterInput from "@/hooks/useLoginRegisterInput";
 import { registerUser } from "@/helpers/registerUser";
-import { labelHolder } from "@/helpers/labelHolder";
 import { useRouter } from "next/navigation";
+import InputLabel from "../InputLabel";
 
 const RegisterForm = () => {
   const router = useRouter();
@@ -16,6 +16,11 @@ const RegisterForm = () => {
     router.push("/");
   };
 
+  let formEmpty =
+    !inputValue.username ||
+    !inputValue.email ||
+    !inputValue.password ||
+    !inputValue.passwordRepeat;
   let isAnyError =
     usernameError.error || emailError.error || passwordError.error;
 
@@ -41,15 +46,11 @@ const RegisterForm = () => {
             {usernameError.message}
           </span>
         ) : null}
-        <label
-          className={
-            "absolute top-[25px] text-textLighter peer-focus:-top-0 peer-focus:text-sm peer-focus:text-secondaryAccent transition-all duration-200 ease-linear" +
-            labelHolder(inputValue.username)
-          }
-          htmlFor="username"
-        >
-          Name
-        </label>
+        <InputLabel
+          labelName={"Name"}
+          isEmpty={!inputValue.username}
+          htmlFor={"username"}
+        ></InputLabel>
       </div>
       <div className="flex flex-col justify-end relative h-12 mb-2">
         <input
@@ -71,15 +72,11 @@ const RegisterForm = () => {
             {emailError.message}
           </span>
         ) : null}
-        <label
-          className={
-            "absolute top-[25px] text-textLighter peer-focus:-top-0 peer-focus:text-sm peer-focus:text-secondaryAccent transition-all duration-200 ease-linear" +
-            labelHolder(inputValue.email)
-          }
-          htmlFor="email"
-        >
-          Email
-        </label>
+        <InputLabel
+          labelName={"Email"}
+          isEmpty={!inputValue.email}
+          htmlFor={"email"}
+        ></InputLabel>
       </div>
       <div className="flex flex-col justify-end relative h-12 mb-2">
         <input
@@ -96,15 +93,11 @@ const RegisterForm = () => {
           autoCorrect="off"
           required
         />
-        <label
-          className={
-            "absolute top-[25px] text-textLighter peer-focus:-top-0 peer-focus:text-sm peer-focus:text-secondaryAccent transition-all duration-200 ease-linear" +
-            labelHolder(inputValue.password)
-          }
-          htmlFor="password"
-        >
-          Password
-        </label>
+        <InputLabel
+          labelName={"Password"}
+          isEmpty={!inputValue.password}
+          htmlFor={"password"}
+        ></InputLabel>
       </div>
       <div className="flex flex-col justify-end relative h-12 mb-2">
         <input
@@ -121,20 +114,18 @@ const RegisterForm = () => {
           autoCorrect="off"
           required
         />
-        <label
-          className={
-            "absolute top-[25px] text-textLighter peer-focus:-top-0 peer-focus:text-sm peer-focus:text-secondaryAccent transition-all duration-200 ease-linear" +
-            labelHolder(inputValue.passwordRepeat)
-          }
-          htmlFor="passwordRepeat"
-        >
-          Repeat Password
-        </label>
+        <InputLabel
+          labelName={"Repeat Password"}
+          isEmpty={!inputValue.passwordRepeat}
+          htmlFor={"passwordRepeat"}
+        ></InputLabel>
       </div>
       <button
         className={
           "bg-primaryAccent rounded-xl px-6 py-[6px] mt-4 hover:bg-secondaryAccent transition-all duration-100 ease-linear" +
-          `${isAnyError ? " !pointer-events-none opacity-35" : null}`
+          `${
+            isAnyError || formEmpty ? " !pointer-events-none opacity-35" : null
+          }`
         }
       >
         Register
