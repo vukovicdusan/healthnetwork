@@ -1,10 +1,10 @@
 import useLoginUser from "@/hooks/useLoginUser";
-import useLoginRegisterInput from "@/hooks/useLoginRegisterInput";
+import useInput from "@/hooks/useInput";
 import React from "react";
 import InputLabel from "../InputLabel";
 
 const LoginForm = () => {
-  const [inputValue, valueHandler, , emailError] = useLoginRegisterInput();
+  const [inputValue, valueHandler, , emailError] = useInput();
   const [loginUser] = useLoginUser();
 
   const submitHandler = (e: React.MouseEvent<HTMLFormElement>) => {

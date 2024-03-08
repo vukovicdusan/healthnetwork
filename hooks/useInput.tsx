@@ -1,21 +1,17 @@
 import { emailChecker } from "@/helpers/emailChecker";
 import { usernameChecker } from "@/helpers/usernameChecker";
+import { InputErrorStateType } from "@/types/InputErrorState";
 import React, { useState } from "react";
 
 type FormState = {
   [key: string]: string;
 };
 
-type ErrorState = {
-  error?: boolean;
-  message?: string;
-};
-
-const useLoginRegisterInput = () => {
+const useInput = () => {
   const [inputValue, setInputValue] = useState<FormState>({});
-  const [usernameError, setUsernameError] = useState<ErrorState>({});
-  const [emailError, setEmailError] = useState<ErrorState>({});
-  const [passwordError, setPasswordError] = useState<ErrorState>({});
+  const [usernameError, setUsernameError] = useState<InputErrorStateType>({});
+  const [emailError, setEmailError] = useState<InputErrorStateType>({});
+  const [passwordError, setPasswordError] = useState<InputErrorStateType>({});
 
   const valueHandler = (e: React.ChangeEvent<HTMLInputElement>) => {
     /* Extracted input value*/
@@ -68,4 +64,4 @@ const useLoginRegisterInput = () => {
   ] as const;
 };
 
-export default useLoginRegisterInput;
+export default useInput;

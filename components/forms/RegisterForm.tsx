@@ -1,19 +1,18 @@
 import React from "react";
-import useLoginRegisterInput from "@/hooks/useLoginRegisterInput";
-import { registerUser } from "@/helpers/registerUser";
-import { useRouter } from "next/navigation";
+import useInput from "@/hooks/useInput";
 import InputLabel from "../InputLabel";
+import useRegisterUser from "@/hooks/useRegisterUser";
 
 const RegisterForm = () => {
-  const router = useRouter();
   const [inputValue, valueHandler, usernameError, emailError, passwordError] =
-    useLoginRegisterInput();
+    useInput();
+  const [registerUser, registerEmailError, registerUsernameError] =
+    useRegisterUser();
 
-  const submitHandler = (e: React.MouseEvent<HTMLFormElement>) => {
+  const submitHandler = async (e: React.MouseEvent<HTMLFormElement>) => {
     e.preventDefault();
     if (!isAnyError)
       registerUser(inputValue.username, inputValue.email, inputValue.password);
-    router.push("/");
   };
 
   let formEmpty =
@@ -130,6 +129,16 @@ const RegisterForm = () => {
       >
         Register
       </button>
+      {registerEmailError.error ? (
+        <span className="block mt-4 text-red-500 text-xs uppercase">
+          {registerEmailError.message}
+        </span>
+      ) : null}
+      {registerUsernameError.error ? (
+        <span className="block mt-4 text-red-500 text-xs uppercase">
+          {registerUsernameError.message}
+        </span>
+      ) : null}
     </form>
   );
 };
